@@ -38,5 +38,4 @@ func jump_with_effects():
 	particles.emitting = true
 
 func exit() -> void:
-	print("exited")
 	owner.jump_count = 0
