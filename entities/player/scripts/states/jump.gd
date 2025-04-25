@@ -1,22 +1,24 @@
 extends State
 
+@export var jump_strength: float = 500.0
+
 var player_suffix: String
 
 func enter() -> void:
 	player_suffix = "_" + str(owner.player_id)
+	# Apply initial upward velocity for the jump
+	owner.velocity.y = - jump_strength
 
-func physics_update(_delta: float) -> void:
+func physics_update(delta: float) -> void:
 	var direction_x: float = Input.get_axis("move_left" + player_suffix, "move_right" + player_suffix)
 
 	owner.velocity.x = direction_x * owner.speed
 
 	owner.move_and_slide()
 	owner.sprites.handle_looking_direction(direction_x)
-
-	# If no input, return to idle
-	if direction_x == 0:
-		state_machine.transition_to("idle")
-
-func handle_input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("move_up" + player_suffix):
-		state_machine.transition_to("jump")
+	
+	if owner.is_on_floor():
+		if direction_x == 0:
+			state_machine.transition_to("idle")
+		else:
+			state_machine.transition_to("move")
