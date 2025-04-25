@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://ssd70hqj7c2o"]
+[gd_scene load_steps=3 format=3 uid="uid://ssd70hqj7c2o"]
+
+[ext_resource type="AudioStream" uid="uid://csx0unddxrfup" path="res://entities/player/sounds/jump.ogg" id="1_smwnt"]
 
 [sub_resource type="Gradient" id="Gradient_kwk8g"]
 colors = PackedColorArray(0.648078, 0.648078, 0.648078, 1, 1, 1, 1, 0.572549)
@@ -19,3 +21,7 @@ linear_accel_max = 2.0
 scale_amount_min = 3.0
 scale_amount_max = 10.0
 color_ramp = SubResource("Gradient_kwk8g")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_smwnt")
+autoplay = true

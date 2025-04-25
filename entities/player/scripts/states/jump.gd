@@ -1,23 +1,21 @@
 extends State
 
-@export var jump_strength: float = 500.0
+@export var jump_strength: float = 300.0
 
 var player_suffix: String
 
 func enter() -> void:
 	player_suffix = "_" + str(owner.player_id)
-	# Apply initial upward velocity for the jump
-	owner.velocity.y = - jump_strength
-	owner.particlesJump.global_position = owner.global_position
-	owner.get_tree().current_scene.add_child(owner.particlesJump)
-	owner.particlesJump.emitting = true
-
 	
 func physics_update(_delta: float) -> void:
 	
 	var direction_x: float = Input.get_axis("move_left" + player_suffix, "move_right" + player_suffix)
 
 	owner.velocity.x = direction_x * owner.speed
+	
+	if Input.is_action_just_pressed("move_up" + player_suffix):
+		if owner.jump_count < owner.total_jump_count:
+			jump_with_effects()
 
 	owner.move_and_slide()
 	owner.sprites.handle_looking_direction(direction_x)
@@ -28,5 +26,17 @@ func physics_update(_delta: float) -> void:
 		else:
 			state_machine.transition_to("move")
 
+func handle_input(event: InputEvent) -> void:
+	if event.is_action_pressed("move_up" + player_suffix):
+		owner.jump_count += 1
+
+func jump_with_effects():
+	owner.velocity.y = - jump_strength
+	var particles = owner.particlesJump.instantiate()
+	particles.global_position = owner.global_position
+	owner.get_tree().current_scene.add_child(particles)
+	particles.emitting = true
+
 func exit() -> void:
-	owner.particlesJump.emitting = false
+	print("exited")
+	owner.jump_count = 0
