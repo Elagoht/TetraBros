@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckqx7wils74w3"]
+
+[ext_resource type="PackedScene" uid="uid://bvgmojghht3fg" path="res://entities/player/Player.tscn" id="1_rj4p4"]
+[ext_resource type="PackedScene" uid="uid://br0dhxwi4rorn" path="res://environment/block/wall.tscn" id="2_nys0b"]
+
+[node name="ArenaOne" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_rj4p4")]
+position = Vector2(109, 225)
+
+[node name="StaticWalls" type="Node" parent="."]
+
+[node name="Wall" parent="StaticWalls" instance=ExtResource("2_nys0b")]
+position = Vector2(0, 328)
+
+[node name="Wall2" parent="StaticWalls" instance=ExtResource("2_nys0b")]
+position = Vector2(32, 328)
+
+[node name="Wall3" parent="StaticWalls" instance=ExtResource("2_nys0b")]
+position = Vector2(64, 328)
+
+[node name="Wall4" parent="StaticWalls" instance=ExtResource("2_nys0b")]
+position = Vector2(96, 328)
+
+[node name="Wall5" parent="StaticWalls" instance=ExtResource("2_nys0b")]
+position = Vector2(128, 328)
+
+[node name="Wall6" parent="StaticWalls" instance=ExtResource("2_nys0b")]
+position = Vector2(160, 328)
+
+[node name="Wall7" parent="StaticWalls" instance=ExtResource("2_nys0b")]
+position = Vector2(192, 328)
+
+[node name="Wall8" parent="StaticWalls" instance=ExtResource("2_nys0b")]
+position = Vector2(224, 328)
+
+[node name="Wall9" parent="StaticWalls" instance=ExtResource("2_nys0b")]
+position = Vector2(256, 328)
