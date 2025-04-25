@@ -6,6 +6,7 @@ extends CharacterBody2D
 
 @onready var sprites: AnimatedSprite2D = $Sprites
 @onready var state_machine: StateMachine = $StateMachine
+@onready var particlesJump = preload("res://particles/particles_jump.tscn").instantiate()
 
 func _ready() -> void:
 	await get_tree().process_frame

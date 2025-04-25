@@ -15,6 +15,6 @@ func handle_input(_event: InputEvent) -> void:
 		if Input.is_action_pressed(key + player_suffix):
 			state_machine.transition_to("move")
 			return
-		
+
 	if Input.is_action_just_pressed("move_up" + player_suffix):
 		state_machine.transition_to("jump")
