@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bvgmojghht3fg"]
+[gd_scene load_steps=7 format=3 uid="uid://bvgmojghht3fg"]
 
 [ext_resource type="Script" uid="uid://cr1aln01r6hge" path="res://entities/player/state_machine.gd" id="1_453mm"]
 [ext_resource type="Script" uid="uid://vnrydtrqhxrl" path="res://entities/player/player.gd" id="1_eaotn"]
 [ext_resource type="Texture2D" uid="uid://rswpi45he48x" path="res://entities/player/sprites/sprite.png" id="1_mab2k"]
 [ext_resource type="Script" uid="uid://igaco32olp5w" path="res://entities/player/scripts/states/idle.gd" id="2_l3c03"]
+[ext_resource type="Script" uid="uid://dm25h07jxr5ux" path="res://entities/player/scripts/states/move.gd" id="4_g3lhm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mab2k"]
 radius = 5.5
@@ -17,6 +18,9 @@ script = ExtResource("1_453mm")
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("2_l3c03")
+
+[node name="Move" type="Node" parent="StateMachine"]
+script = ExtResource("4_g3lhm")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(-4, -13)
