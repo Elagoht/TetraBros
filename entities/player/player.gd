@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var gravity: float = 980.0
 @export var player_id: int = 1 # will be 2 players
 
+@onready var sprites: AnimatedSprite2D = $Sprites
 @onready var state_machine: StateMachine = $StateMachine
 
 func _ready() -> void:
