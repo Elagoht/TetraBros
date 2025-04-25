@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://bpcj3eygt1roy"]
+
+[node name="FireBeam" type="Node2D"]

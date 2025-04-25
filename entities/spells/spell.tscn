@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvi4mb1qf4p2m"]
+
+[ext_resource type="Texture2D" uid="uid://df4cbqciu48rk" path="res://entities/spells/sprites/dummy-fire.png" id="1_vk3ec"]
+[ext_resource type="Script" uid="uid://nqqo4lvum1ko" path="res://entities/spells/spell.gd" id="1_xwift"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4qstg"]
+size = Vector2(100, 20)
+
+[node name="Spell" type="Area2D"]
+script = ExtResource("1_xwift")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(50, 0)
+shape = SubResource("RectangleShape2D_4qstg")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(50, 0)
+texture = ExtResource("1_vk3ec")
+
+[node name="LifeTime" type="Timer" parent="."]

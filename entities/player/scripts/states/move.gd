@@ -3,6 +3,7 @@ extends State
 var player_suffix: String
 
 func enter() -> void:
+	owner.sprites.play("move")
 	player_suffix = "_" + str(owner.player_id)
 
 func physics_update(_delta: float) -> void:

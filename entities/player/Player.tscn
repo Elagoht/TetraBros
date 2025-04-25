@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bvgmojghht3fg"]
+[gd_scene load_steps=27 format=3 uid="uid://bvgmojghht3fg"]
 
 [ext_resource type="Script" uid="uid://cr1aln01r6hge" path="res://entities/player/state_machine.gd" id="1_453mm"]
 [ext_resource type="Script" uid="uid://vnrydtrqhxrl" path="res://entities/player/player.gd" id="1_eaotn"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://60arr2da6gj8" path="res://entities/player/sprites/idle/player_idle1.png" id="5_2rv2u"]
 [ext_resource type="Script" uid="uid://br8h8wrffwuro" path="res://entities/player/scripts/states/jump.gd" id="5_mq27t"]
 [ext_resource type="Texture2D" uid="uid://dnukuj1yu65xr" path="res://entities/player/sprites/idle/player_idle2.png" id="6_mq27t"]
+[ext_resource type="Script" uid="uid://fdf1awv74bgb" path="res://entities/player/scripts/weapons.gd" id="6_oj2y3"]
 [ext_resource type="Texture2D" uid="uid://n1w8flux63uy" path="res://entities/player/sprites/idle/player_idle3.png" id="7_kwk8g"]
 [ext_resource type="Texture2D" uid="uid://c4kgr7yanpe8r" path="res://entities/player/sprites/idle/player_idle4.png" id="8_2a181"]
 [ext_resource type="Texture2D" uid="uid://c8qcprxcrsvp3" path="res://entities/player/sprites/idle/player_idle5.png" id="9_aubru"]
@@ -22,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://bpkv2l7qxmtb0" path="res://entities/player/sprites/walk/player_walk6.png" id="19_minwf"]
 [ext_resource type="Texture2D" uid="uid://wpmo2kqmsmci" path="res://entities/player/sprites/walk/player_walk7.png" id="20_btcch"]
 [ext_resource type="Texture2D" uid="uid://egy4ibu734kn" path="res://entities/player/sprites/walk/player_walk8.png" id="21_unwxu"]
+[ext_resource type="Script" uid="uid://cgm6hqpm18avv" path="res://entities/player/scripts/spell_manager.gd" id="24_oj2y3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4fbvh"]
 animations = [{
@@ -52,7 +54,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -80,8 +82,8 @@ animations = [{
 "texture": ExtResource("21_unwxu")
 }],
 "loop": true,
-"name": &"walk",
-"speed": 5.0
+"name": &"move",
+"speed": 15.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mab2k"]
@@ -103,12 +105,18 @@ script = ExtResource("4_g3lhm")
 [node name="Jump" type="Node" parent="StateMachine"]
 script = ExtResource("5_mq27t")
 
+[node name="Weapons" type="Node" parent="."]
+script = ExtResource("6_oj2y3")
+
 [node name="Sprites" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -13)
+position = Vector2(-1, -13)
 sprite_frames = SubResource("SpriteFrames_4fbvh")
-animation = &"walk"
+animation = &"move"
 script = ExtResource("14_kwk8g")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -13)
 shape = SubResource("CapsuleShape2D_mab2k")
+
+[node name="SpellManager" type="Node" parent="."]
+script = ExtResource("24_oj2y3")
