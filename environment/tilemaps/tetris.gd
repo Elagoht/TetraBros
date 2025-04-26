@@ -118,10 +118,28 @@ class_name Tetris
 	}
 }
 
+@onready var falling_block_count: int = 0
+
 func _ready() -> void:
 	spawn_tetramino(Vector2i(7, 0), "L", 3)
 
+func increase_falling_block_count(x: int = 1):
+	falling_block_count += x
+
+func decrease_falling_block_count(x: int = 1):
+	falling_block_count -= x
+	if falling_block_count <= 0:
+		var type = blocks.keys()[randi_range(0, 6)]
+		var size = len(blocks[type])
+		
+		var origin_x = randi_range(0, 20-size-1)
+		var origin_y = -size
+		var origin = Vector2i(origin_x, origin_y)
+		var direction = randi_range(0, 3)
+		spawn_tetramino(origin, type, direction)
+
 func create_falling_block(tile_position: Vector2i) -> void:
+	increase_falling_block_count(1)
 	var block: FallingBlock = falling_block_resource.instantiate()
 	add_child(block)
 	block.global_position = tile_position*32
