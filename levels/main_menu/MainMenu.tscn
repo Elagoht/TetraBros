@@ -1,0 +1,77 @@
+[gd_scene load_steps=8 format=3 uid="uid://cbrw6lijdpoon"]
+
+[ext_resource type="Texture2D" uid="uid://d1t00tktunkj5" path="res://environment/tilemaps/Background.png" id="1_u3gj5"]
+[ext_resource type="FontFile" uid="uid://lawbeh6q3yw7" path="res://fonts/KiwiSoda.ttf" id="2_g0bau"]
+[ext_resource type="Script" uid="uid://6iu5qp6ju8dq" path="res://levels/main_menu/button_quit.gd" id="4_n16n0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0ui0g"]
+font = ExtResource("2_g0bau")
+font_size = 80
+font_color = Color(0.677905, 0.673213, 0.338941, 1)
+outline_size = 6
+outline_color = Color(0.321569, 0.231373, 0.25098, 1)
+
+[sub_resource type="Theme" id="Theme_g0bau"]
+default_font = ExtResource("2_g0bau")
+
+[sub_resource type="GDScript" id="GDScript_ahxuy"]
+script/source = "extends Button
+
+func _on_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://levels/ArenaOne.tscn\")
+"
+
+[sub_resource type="Theme" id="Theme_8wp8n"]
+default_font = ExtResource("2_g0bau")
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(320, 180)
+scale = Vector2(1.11111, 1.11111)
+texture = ExtResource("1_u3gj5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -190.0
+offset_top = -120.0
+offset_right = 190.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "TetraBros"
+label_settings = SubResource("LabelSettings_0ui0g")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Play" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+tooltip_text = "This game requires exact 2 players to be played."
+theme = SubResource("Theme_g0bau")
+text = "I Have a Friend"
+script = SubResource("GDScript_ahxuy")
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+tooltip_text = "This game requires exact 2 players to be played."
+theme = SubResource("Theme_8wp8n")
+text = "I'm So Alone"
+script = ExtResource("4_n16n0")
+
+[connection signal="pressed" from="VBoxContainer/Play" to="VBoxContainer/Play" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="VBoxContainer/Quit" method="_on_pressed"]
