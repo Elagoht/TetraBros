@@ -1,26 +1,13 @@
 extends Node
 
-@export var idle_spells := {
-	"A": preload("res://entities/spells/FireBeam.tscn"), 
-	"B": preload("res://entities/spells/FireBeam.tscn")
-}
-@export var block_spells := {
-	"A": preload("res://entities/spells/BreezeSphere.tscn"), 
-	"B": preload("res://entities/spells/BreezeSphere.tscn")
-}
-@export var move_spells := {
-	"A": preload("res://entities/spells/FireBeam.tscn"),
-	"B": preload("res://entities/spells/FireBeam.tscn")
-}
-@export var jump_spells := {
-	"A": preload("res://entities/spells/FireBeam.tscn"),
-	"B": preload("res://entities/spells/FireBeam.tscn")
-}
+@export var dragonsBreath = preload("res://entities/spells/DragonsBreath.tscn") 
+@export var dragonsRaise = preload("res://entities/spells/DragonsBreath.tscn")
+@export var breezeSphere = preload("res://entities/spells/BreezeSphere.tscn")
 
 var current_state: String = "idle"
 
-func cast_spell(button: String, caster: Node):
-	var spell_scn = _get_current_spell(button)
+func cast_spell(spell_string: String, caster: Node):
+	var spell_scn = _get_current_spell(spell_string)
 	if not spell_scn: return
 	var spell = spell_scn.instantiate()
 	spell.position = caster.global_position
@@ -28,15 +15,13 @@ func cast_spell(button: String, caster: Node):
 	spell.fired_by = caster
 	get_tree().current_scene.add_child(spell)
 
-func _get_current_spell(button: String) -> PackedScene:
-	match current_state:
-		"idle":
-			return idle_spells.get(button, null)
-		"block":
-			return idle_spells.get(button, null)
-		"move":
-			return move_spells.get(button, null)
-		"jump":
-			return jump_spells.get(button, null)
+func _get_current_spell(spell: String) -> PackedScene:
+	match spell:
+		"dragonsbreath":
+			return dragonsBreath
+		"dragonsraise":
+			return dragonsRaise
+		"breezesphere":
+			return breezeSphere
 		_:
-			return null
+			return

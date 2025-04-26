@@ -1,6 +1,7 @@
 extends State
 
-@onready var sound_resource = preload("res://entities/player/sounds/dragonsbreath_casting.ogg")
+@export var sound_resource = preload("res://entities/player/sounds/dragonsbreath_casting.ogg")
+@export var spell_name: String
 
 var sound: AudioStream
 var player_suffix: String
@@ -17,5 +18,5 @@ func physics_update(_delta: float) -> void:
 
 func _on_spell_timer_timeout() -> void:
 	if state_machine.current_state == self:
-		owner.spellCaster.cast_spell("A", owner)
+		owner.spellCaster.cast_spell(spell_name, owner)
 		state_machine.transition_to("idle")
