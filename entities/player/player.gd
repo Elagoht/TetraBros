@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Player
+
 @export var speed: int = 200
 @export var gravity: float = 980.0
 @export var player_id: int = 1 # will be 2 players

@@ -144,7 +144,7 @@ animations = [{
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_eaotn")
 
-[node name="HitBox" type="Area2D" parent="."]
+[node name="HitBox" type="Area2D" parent="." groups=["player"]]
 script = ExtResource("2_m1mwl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]

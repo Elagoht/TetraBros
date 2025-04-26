@@ -5,6 +5,7 @@ class_name FallingBlock
 @export var speed: int = 50
 
 @onready var tilemap: TileMapLayer
+@onready var bottom_collider: CollisionShape2D = $Area2D/BottomCollider
 
 func _ready() -> void:
 	tilemap = get_parent().get_node("Tilemap")
@@ -17,3 +18,9 @@ func make_solid():
 	var y = int((position.y+16)/32)
 	tilemap.set_cell(Vector2i(x, y), 0, Vector2i(0, 0))
 	queue_free()
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.is_in_group("player"):
+		var player: Player = area.get_parent()
+		if player.is_on_floor():
+			print("player died")
