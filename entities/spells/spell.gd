@@ -9,9 +9,10 @@ class_name Spell
 func _ready():
 	$LifeTime.start()
 
-func _on_area_entered(area: Area2D):
+func _on_area_entered(area: Area2D) -> void:
 	if area.owner == fired_by:
 		return
+	print(area)
 	if area.has_method("take_damage"):
 		area.take_damage(damage)
 	queue_free()

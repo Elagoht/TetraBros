@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var gravity: float = 980.0
 @export var player_id: int = 1 # will be 2 players
 @export var total_jump_count: int = 2
+@export var health: int = 10
 
 @onready var jump_count: int = 0
 
@@ -16,6 +17,7 @@ extends CharacterBody2D
 @onready var particlesJump = preload("res://entities/player/particles/particles_jump.tscn")
 
 var player_suffix: String
+var is_stunned: bool = false
 
 func _ready() -> void:
 	player_suffix = "_" + str(player_id)
@@ -30,3 +32,14 @@ func _physics_process(delta: float) -> void:
 	# Apply gravity - this affects all states
 	if not is_on_floor():
 		velocity.y += gravity * delta
+
+func stun_player() -> void:
+	is_stunned = true
+	if state_machine:
+		state_machine.transition_to("stunned")
+
+func renew_health():
+	health = 10
+	is_stunned = false
+	if state_machine:
+		state_machine.transition_to("idle")

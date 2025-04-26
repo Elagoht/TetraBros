@@ -1,8 +1,9 @@
-[gd_scene load_steps=38 format=3 uid="uid://bvgmojghht3fg"]
+[gd_scene load_steps=40 format=3 uid="uid://bvgmojghht3fg"]
 
 [ext_resource type="Script" uid="uid://cr1aln01r6hge" path="res://entities/player/state_machine.gd" id="1_453mm"]
 [ext_resource type="Script" uid="uid://vnrydtrqhxrl" path="res://entities/player/player.gd" id="1_eaotn"]
 [ext_resource type="Script" uid="uid://igaco32olp5w" path="res://entities/player/scripts/states/idle.gd" id="2_l3c03"]
+[ext_resource type="Script" uid="uid://c8mhsfwd1m44x" path="res://entities/player/scripts/hitBox.gd" id="2_m1mwl"]
 [ext_resource type="Script" uid="uid://dm25h07jxr5ux" path="res://entities/player/scripts/states/move.gd" id="4_g3lhm"]
 [ext_resource type="Texture2D" uid="uid://60arr2da6gj8" path="res://entities/player/sprites/idle/player_idle1.png" id="5_2rv2u"]
 [ext_resource type="Script" uid="uid://br8h8wrffwuro" path="res://entities/player/scripts/states/jump.gd" id="5_mq27t"]
@@ -33,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://biaqa8tqhv6bo" path="res://entities/player/sprites/walk/player_walk7.png" id="20_btcch"]
 [ext_resource type="Texture2D" uid="uid://decarsea3kydu" path="res://entities/player/sprites/walk/player_walk8.png" id="21_unwxu"]
 [ext_resource type="Script" uid="uid://cgm6hqpm18avv" path="res://entities/player/scripts/spell_manager.gd" id="24_oj2y3"]
+[ext_resource type="Script" uid="uid://bbaj2soa4mlt5" path="res://entities/player/scripts/states/stunned.gd" id="30_stunned"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5qbdv"]
 size = Vector2(12, 26)
@@ -143,6 +145,7 @@ animations = [{
 script = ExtResource("1_eaotn")
 
 [node name="HitBox" type="Area2D" parent="."]
+script = ExtResource("2_m1mwl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(-1, -13)
@@ -170,6 +173,9 @@ script = ExtResource("5_mq27t")
 
 [node name="Block" type="Node" parent="StateMachine"]
 script = ExtResource("6_2fpie")
+
+[node name="Stunned" type="Node" parent="StateMachine"]
+script = ExtResource("30_stunned")
 
 [node name="DragonsBreath" type="Node" parent="StateMachine"]
 script = ExtResource("6_d168t")
