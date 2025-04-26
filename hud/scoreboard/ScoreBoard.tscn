@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://dldc6kn3d51mx"]
+
+[ext_resource type="Script" uid="uid://c6j8mudbhvydb" path="res://hud/scoreboard/score_board.gd" id="1_eipgc"]
+[ext_resource type="PackedScene" uid="uid://kki1dbdcnjfp" path="res://hud/scoreboard/player_hud.tscn" id="1_hojm0"]
+
+[node name="ScoreBoard" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_eipgc")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AspectRatioContainer"]
+layout_mode = 2
+
+[node name="PlayerHUD" parent="AspectRatioContainer/HBoxContainer" instance=ExtResource("1_hojm0")]
+layout_mode = 2
+player_name = "Elagoht"
+
+[node name="Player2HUD" parent="AspectRatioContainer/HBoxContainer" instance=ExtResource("1_hojm0")]
+layout_mode = 2
+player_name = "imns"
+id = 1
+revert = true

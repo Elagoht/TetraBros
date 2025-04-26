@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://cbrw6lijdpoon"]
+[gd_scene load_steps=13 format=3 uid="uid://cbrw6lijdpoon"]
 
+[ext_resource type="Script" uid="uid://b4nd4eutekxm" path="res://levels/main_menu/main_menu.gd" id="1_n16n0"]
 [ext_resource type="Texture2D" uid="uid://d1t00tktunkj5" path="res://environment/tilemaps/Background.png" id="1_u3gj5"]
 [ext_resource type="FontFile" uid="uid://lawbeh6q3yw7" path="res://fonts/KiwiSoda.ttf" id="2_g0bau"]
 [ext_resource type="Script" uid="uid://6iu5qp6ju8dq" path="res://levels/main_menu/button_quit.gd" id="4_n16n0"]
@@ -14,6 +15,13 @@ outline_color = Color(0.321569, 0.231373, 0.25098, 1)
 [sub_resource type="Theme" id="Theme_g0bau"]
 default_font = ExtResource("2_g0bau")
 
+[sub_resource type="InputEventKey" id="InputEventKey_g0bau"]
+device = -1
+physical_keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_n16n0"]
+events = [SubResource("InputEventKey_g0bau")]
+
 [sub_resource type="GDScript" id="GDScript_ahxuy"]
 script/source = "extends Button
 
@@ -21,8 +29,15 @@ func _on_pressed() -> void:
 	get_tree().change_scene_to_file(\"res://levels/ArenaOne.tscn\")
 "
 
-[sub_resource type="Theme" id="Theme_8wp8n"]
+[sub_resource type="Theme" id="Theme_u3gj5"]
 default_font = ExtResource("2_g0bau")
+
+[sub_resource type="InputEventKey" id="InputEventKey_ahxuy"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_hr1d4"]
+events = [SubResource("InputEventKey_ahxuy")]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -31,6 +46,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_n16n0")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(320, 180)
@@ -63,14 +79,16 @@ vertical_alignment = 1
 layout_mode = 2
 tooltip_text = "This game requires exact 2 players to be played."
 theme = SubResource("Theme_g0bau")
+shortcut = SubResource("Shortcut_n16n0")
 text = "I Have a Friend"
 script = SubResource("GDScript_ahxuy")
 
 [node name="Quit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-tooltip_text = "This game requires exact 2 players to be played."
-theme = SubResource("Theme_8wp8n")
-text = "I'm So Alone"
+tooltip_text = "Go and find a friend"
+theme = SubResource("Theme_u3gj5")
+shortcut = SubResource("Shortcut_hr1d4")
+text = "I'm so Alone"
 script = ExtResource("4_n16n0")
 
 [connection signal="pressed" from="VBoxContainer/Play" to="VBoxContainer/Play" method="_on_pressed"]

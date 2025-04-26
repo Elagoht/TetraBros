@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://kki1dbdcnjfp"]
+
+[ext_resource type="Script" uid="uid://dk6lhq52t2x0n" path="res://hud/scoreboard/player_hud.gd" id="1_11wgq"]
+
+[node name="PlayerHUD" type="VBoxContainer"]
+script = ExtResource("1_11wgq")
+
+[node name="PlayerName" type="Label" parent="."]
+layout_mode = 2
+text = "Elagoht"
+
+[node name="Stars" type="HBoxContainer" parent="."]
+layout_mode = 2
