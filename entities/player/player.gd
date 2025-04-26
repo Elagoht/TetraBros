@@ -43,3 +43,6 @@ func renew_health():
 	is_stunned = false
 	if state_machine:
 		state_machine.transition_to("idle")
+
+func apply_knockback(knockback: Vector2) -> void:
+	velocity = knockback

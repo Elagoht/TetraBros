@@ -13,7 +13,7 @@ scale = Vector2(1.11111, 1.11111)
 texture = ExtResource("3_ftj8y")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="Background"]
-position = Vector2(-288, -162)
+position = Vector2(-292.5, -154.8)
 rotation = -0.872665
 scale = Vector2(0.9, 0.9)
 color = Color(0.968627, 0.960784, 0, 0.168627)
