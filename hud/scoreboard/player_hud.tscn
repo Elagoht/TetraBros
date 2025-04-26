@@ -1,12 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://kki1dbdcnjfp"]
+[gd_scene load_steps=4 format=3 uid="uid://kki1dbdcnjfp"]
 
 [ext_resource type="Script" uid="uid://dk6lhq52t2x0n" path="res://hud/scoreboard/player_hud.gd" id="1_11wgq"]
+[ext_resource type="FontFile" uid="uid://lawbeh6q3yw7" path="res://fonts/KiwiSoda.ttf" id="2_i3tah"]
+
+[sub_resource type="Theme" id="Theme_lbb38"]
+default_font = ExtResource("2_i3tah")
 
 [node name="PlayerHUD" type="VBoxContainer"]
+offset_right = 320.0
+offset_bottom = 64.0
 script = ExtResource("1_11wgq")
 
 [node name="PlayerName" type="Label" parent="."]
 layout_mode = 2
+theme = SubResource("Theme_lbb38")
 text = "Elagoht"
 
 [node name="Stars" type="HBoxContainer" parent="."]

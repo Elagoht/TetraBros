@@ -7,6 +7,8 @@ const star_resource = preload("res://hud/scoreboard/star.png")
 
 func _ready() -> void:
 	$PlayerName.text = player_name
+	if revert:
+		$PlayerName.horizontal_alignment = 2
 
 func update_score(new_score: int) -> void:
 	var stars = []
@@ -19,9 +21,9 @@ func update_score(new_score: int) -> void:
 	if revert:
 		stars.reverse()
 
-	clear_container($StarsContainer)
+	clear_container($Stars)
 	for star in stars:
-		$StarsContainer.add_child(star)
+		$Stars.add_child(star)
 
 func clear_container(container: Control) -> void:
 	for child in container.get_children():

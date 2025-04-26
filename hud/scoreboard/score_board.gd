@@ -1,11 +1,14 @@
 extends Control
 
 @onready var huds := [
-	$AspectRatioContainer/HBoxContainer/PlayerHUD,
-	$AspectRatioContainer/HBoxContainer/Player2HUD
+	$PlayerHUD,
+	$Player2HUD
 ]
 
-@onready var score = Vector2i.ZERO
+@onready var score = Vector2i(2,1)
+
+func _ready() -> void:
+	update_scoreboard()
 
 func update_scoreboard() -> void:
 	for player in range(2):

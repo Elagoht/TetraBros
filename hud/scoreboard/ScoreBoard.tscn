@@ -8,20 +8,21 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_eipgc")
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="AspectRatioContainer"]
+[node name="PlayerHUD" parent="." instance=ExtResource("1_hojm0")]
 layout_mode = 2
-
-[node name="PlayerHUD" parent="AspectRatioContainer/HBoxContainer" instance=ExtResource("1_hojm0")]
-layout_mode = 2
+offset_left = 10.0
+offset_top = 5.0
+offset_right = 68.0
+offset_bottom = 32.0
 player_name = "Elagoht"
 
-[node name="Player2HUD" parent="AspectRatioContainer/HBoxContainer" instance=ExtResource("1_hojm0")]
+[node name="Player2HUD" parent="." instance=ExtResource("1_hojm0")]
 layout_mode = 2
+offset_left = 568.0
+offset_top = 4.0
+offset_right = 626.0
+offset_bottom = 31.0
+alignment = 2
 player_name = "imns"
 id = 1
 revert = true
