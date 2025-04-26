@@ -1,3 +1,9 @@
-[gd_scene format=3 uid="uid://bpcj3eygt1roy"]
+[gd_scene load_steps=3 format=3 uid="uid://64l7gh2reaw6"]
 
-[node name="FireBeam" type="Node2D"]
+[ext_resource type="PackedScene" uid="uid://dvi4mb1qf4p2m" path="res://entities/spells/spell.tscn" id="1_2tbjg"]
+[ext_resource type="Texture2D" uid="uid://df4cbqciu48rk" path="res://entities/spells/sprites/dummy-fire.png" id="2_g2p6g"]
+
+[node name="Spell" instance=ExtResource("1_2tbjg")]
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource("2_g2p6g")

@@ -1,19 +1,19 @@
 extends Node
 
 @export var idle_spells := {
-	"A": preload("res://spells/Fireball.tscn"), 
-	"B": preload("res://spells/IceBlast.tscn")
+	"A": preload("res://entities/spells/FireBeam.tscn"), 
+	"B": preload("res://entities/spells/FireBeam.tscn")
 }
 @export var move_spells := {
-	"A": preload("res://spells/LightningBolt.tscn"),
-	"B": preload("res://spells/FlameWave.tscn")
+	"A": preload("res://entities/spells/FireBeam.tscn"),
+	"B": preload("res://entities/spells/FireBeam.tscn")
 }
 @export var jump_spells := {
-	"A": preload("res://spells/Meteor.tscn"),
-	"B": preload("res://spells/WindSlice.tscn")
+	"A": preload("res://entities/spells/FireBeam.tscn"),
+	"B": preload("res://entities/spells/FireBeam.tscn")
 }
 
-var current_state := "idle" # "move", "jump" vb.
+var current_state: String = "idle"
 
 func cast_spell(button: String, position: Vector2, direction: Vector2, caster: Node):
 	var spell_scn = _get_current_spell(button)

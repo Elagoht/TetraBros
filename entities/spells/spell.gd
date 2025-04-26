@@ -7,7 +7,7 @@ extends Area2D
 @export var fired_by: Node = null
 
 func _ready():
-	$Timer.start()
+	$LifeTime.start()
 
 func _physics_process(delta):
 	position += transform.x * speed * delta
@@ -19,5 +19,5 @@ func _on_area_entered(area):
 		area.take_damage(damage)
 	queue_free()
 
-func _on_Timer_timeout():
+func _on_life_time_timeout() -> void:
 	queue_free()
