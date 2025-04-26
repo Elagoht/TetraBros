@@ -5,6 +5,11 @@
 
 [node name="ArenaOne" type="Node2D"]
 
+[node name="Player2" parent="." instance=ExtResource("1_rj4p4")]
+modulate = Color(1, 0.360784, 0.129412, 1)
+position = Vector2(228, 228)
+player_id = 2
+
 [node name="Player" parent="." instance=ExtResource("1_rj4p4")]
 position = Vector2(109, 225)
 
