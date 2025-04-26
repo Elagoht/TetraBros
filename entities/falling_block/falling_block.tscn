@@ -9,9 +9,8 @@ size = Vector2(30, 30)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c7iss"]
 size = Vector2(22, 1)
 
-[node name="FallingBlock" type="RigidBody2D"]
-gravity_scale = 0.0
-lock_rotation = true
+[node name="FallingBlock" type="AnimatableBody2D"]
+sync_to_physics = false
 script = ExtResource("1_kq42p")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

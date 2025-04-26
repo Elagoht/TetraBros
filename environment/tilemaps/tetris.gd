@@ -3,6 +3,7 @@ extends Node
 class_name Tetris
 
 @onready var falling_block_resource = preload("res://entities/falling_block/falling_block.tscn")
+@onready var tilemap: TileMapLayer = $Tilemap
 
 @onready var blocks = {
 	"I": {

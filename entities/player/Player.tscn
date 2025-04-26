@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bvgmojghht3fg"]
+[gd_scene load_steps=41 format=3 uid="uid://bvgmojghht3fg"]
 
 [ext_resource type="Script" uid="uid://cr1aln01r6hge" path="res://entities/player/state_machine.gd" id="1_453mm"]
 [ext_resource type="Script" uid="uid://vnrydtrqhxrl" path="res://entities/player/player.gd" id="1_eaotn"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://c8qcprxcrsvp3" path="res://entities/player/sprites/idle/player_idle5.png" id="9_aubru"]
 [ext_resource type="Texture2D" uid="uid://xjjj5adp16gm" path="res://entities/player/sprites/block/player_block2.png" id="9_wbbrj"]
 [ext_resource type="Texture2D" uid="uid://b5dpqwhan1kyu" path="res://entities/player/sprites/idle/player_idle6.png" id="10_ax5yc"]
+[ext_resource type="Script" uid="uid://b0arsyelrqu61" path="res://entities/player/scripts/die.gd" id="10_ck0hy"]
 [ext_resource type="Texture2D" uid="uid://hogvqalfopfe" path="res://entities/player/sprites/cast_spell/player_spell4.png" id="10_i3i7k"]
 [ext_resource type="Texture2D" uid="uid://bfu8nneurysgy" path="res://entities/player/sprites/block/player_block3.png" id="10_m1mwl"]
 [ext_resource type="Texture2D" uid="uid://dy0hakl4cm77u" path="res://entities/player/sprites/idle/player_idle7.png" id="11_j531f"]
@@ -81,6 +82,29 @@ animations = [{
 "loop": true,
 "name": &"cast_spell",
 "speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_5qbdv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_wbbrj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_m1mwl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_m1mwl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_m1mwl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_m1mwl")
+}],
+"loop": false,
+"name": &"die",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -189,11 +213,14 @@ spell_name = "dragonsraise"
 script = ExtResource("6_d168t")
 spell_name = "breezesphere"
 
+[node name="Die" type="Node" parent="StateMachine"]
+script = ExtResource("10_ck0hy")
+metadata/_custom_type_script = "uid://b0arsyelrqu61"
+
 [node name="Sprites" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -13)
 sprite_frames = SubResource("SpriteFrames_4fbvh")
-animation = &"block"
-frame_progress = 0.0282237
+animation = &"die"
 script = ExtResource("14_kwk8g")
 
 [node name="SpellCaster" type="Node" parent="."]

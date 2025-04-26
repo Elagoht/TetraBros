@@ -48,3 +48,6 @@ func renew_health():
 
 func apply_knockback(knockback: Vector2) -> void:
 	velocity = knockback
+
+func die():
+	state_machine.transition_to("die")
