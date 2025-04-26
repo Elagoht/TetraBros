@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0r5q0hi88x0v"]
+
+[ext_resource type="Texture2D" uid="uid://bxn8n4mlsdsb" path="res://environment/tilemaps/block.png" id="1_bf2ob"]
+[ext_resource type="Script" uid="uid://bt0hyqc165xjp" path="res://entities/falling_block/scripts/falling_block.gd" id="1_kq42p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kq42p"]
+size = Vector2(30, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c7iss"]
+size = Vector2(30, 1)
+
+[node name="FallingBlock" type="RigidBody2D"]
+gravity_scale = 0.0
+lock_rotation = true
+script = ExtResource("1_kq42p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(16, 16)
+texture = ExtResource("1_bf2ob")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_kq42p")
+
+[node name="OneWayCollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(16, 31.5)
+shape = SubResource("RectangleShape2D_c7iss")
+one_way_collision = true
