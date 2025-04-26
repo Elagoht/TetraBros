@@ -1,15 +1,44 @@
-[gd_scene load_steps=5 format=3 uid="uid://64l7gh2reaw6"]
+[gd_scene load_steps=8 format=3 uid="uid://cso1blrofajsl"]
 
-[ext_resource type="PackedScene" uid="uid://dvi4mb1qf4p2m" path="res://entities/spells/spell.tscn" id="1_js65b"]
-[ext_resource type="Script" uid="uid://b7sg5hqgqrprc" path="res://entities/spells/scripts/fire_beam.gd" id="2_63mh6"]
-[ext_resource type="Texture2D" uid="uid://df4cbqciu48rk" path="res://entities/spells/sprites/dummy-fire.png" id="3_3d5kb"]
-[ext_resource type="AudioStream" uid="uid://bxo3xgkecrg0j" path="res://entities/spells/sounds/dragons_breath.ogg" id="4_bp344"]
+[ext_resource type="Texture2D" uid="uid://cpgt04fn4dwat" path="res://entities/spells/sprites/dragonsbreath1.png" id="2_3d5kb"]
+[ext_resource type="Script" uid="uid://b7sg5hqgqrprc" path="res://entities/spells/scripts/dragonsbreath.gd" id="2_63mh6"]
+[ext_resource type="Texture2D" uid="uid://c1802s8w8pgnv" path="res://entities/spells/sprites/dragonsbreath2.png" id="3_bp344"]
+[ext_resource type="Texture2D" uid="uid://b2lt451xm7u6k" path="res://entities/spells/sprites/dragonsbreath3.png" id="4_7fb58"]
+[ext_resource type="Texture2D" uid="uid://u4klxmekwnuo" path="res://entities/spells/sprites/dragonsbreath4.png" id="5_aajin"]
 
-[node name="Spell" instance=ExtResource("1_js65b")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_001dx"]
+size = Vector2(40, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6ja4f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_3d5kb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_bp344")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7fb58")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_aajin")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="DragonsBreath" type="Area2D"]
 script = ExtResource("2_63mh6")
+metadata/_custom_type_script = "uid://nqqo4lvum1ko"
 
-[node name="Sprite" parent="." index="1"]
-texture = ExtResource("3_3d5kb")
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_001dx")
 
-[node name="Audio" parent="." index="3"]
-stream = ExtResource("4_bp344")
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6ja4f")
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

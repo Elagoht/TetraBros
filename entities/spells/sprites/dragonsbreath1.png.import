@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://df4cbqciu48rk"
-path="res://.godot/imported/dummy-fire.png-ca55d40d433000296f22da1f58e15a1a.ctex"
+uid="uid://cpgt04fn4dwat"
+path="res://.godot/imported/dragonsbreath1.png-ddcf93f557ff9b2321a8b098f91feb52.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/spells/sprites/dummy-fire.png"
-dest_files=["res://.godot/imported/dummy-fire.png-ca55d40d433000296f22da1f58e15a1a.ctex"]
+source_file="res://entities/spells/sprites/dragonsbreath1.png"
+dest_files=["res://.godot/imported/dragonsbreath1.png-ddcf93f557ff9b2321a8b098f91feb52.ctex"]
 
 [params]
 

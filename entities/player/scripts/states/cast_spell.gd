@@ -12,6 +12,7 @@ func enter() -> void:
 	owner.spellTimer.start(0.5)
 	owner.spellPrepareSound.stream = sound_resource
 	owner.spellPrepareSound.play()
+	owner.spellCaster.cast_spell
 
 func physics_update(_delta: float) -> void:
 	owner.move_and_slide()
