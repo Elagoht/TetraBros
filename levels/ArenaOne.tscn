@@ -1,43 +1,35 @@
-[gd_scene load_steps=3 format=3 uid="uid://ckqx7wils74w3"]
+[gd_scene load_steps=5 format=4 uid="uid://ckqx7wils74w3"]
 
+[ext_resource type="PackedScene" uid="uid://pc6yh8yh6t1t" path="res://environment/tilemaps/static.tscn" id="1_ftj8y"]
 [ext_resource type="PackedScene" uid="uid://bvgmojghht3fg" path="res://entities/player/Player.tscn" id="1_rj4p4"]
-[ext_resource type="PackedScene" uid="uid://br0dhxwi4rorn" path="res://environment/block/wall.tscn" id="2_nys0b"]
+[ext_resource type="PackedScene" uid="uid://cv5eqjnj6v6i7" path="res://environment/tilemaps/tetris.tscn" id="3_b7opo"]
+[ext_resource type="Texture2D" uid="uid://d1t00tktunkj5" path="res://environment/tilemaps/Background.png" id="3_ftj8y"]
 
 [node name="ArenaOne" type="Node2D"]
 
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(320, 180)
+scale = Vector2(1.11111, 1.11111)
+texture = ExtResource("3_ftj8y")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Background"]
+position = Vector2(-288, -162)
+rotation = -0.872665
+scale = Vector2(0.9, 0.9)
+color = Color(0.968627, 0.960784, 0, 0.168627)
+shadow_enabled = true
+
+[node name="TileMapLayer" parent="." instance=ExtResource("1_ftj8y")]
+position = Vector2(224, 224)
+tile_map_data = PackedByteArray("AAD6/wEAAAAAAAEAAAD6/wIAAAAAAAIAAAD7/wIAAAABAAIAAAD8/wIAAAACAAIAAAD8/wEAAAADAAEAAAD8/wAAAAACAAAAAAD7/wAAAAAEAAIAAAD7/wEAAAABAAEAAAD6/wAAAAAAAAAAAAD//wIAAAABAAMAAAAAAAIAAAACAAMAAAAAAAAAAAAAAAIAAAAEAAAAAAAAAAIAAAAFAAAAAAACAAIAAAAEAAIAAAABAAMAAAAFAAIAAAACAAMAAAAJAAIAAAAAAAIAAAAKAAIAAAABAAIAAAAKAAEAAAABAAEAAAAKAAAAAAAEAAIAAAAJAAAAAAAAAAAAAAAJAAEAAAAAAAEAAAABAAAAAAACAAIAAAABAAIAAAADAAMAAAAGAAIAAAADAAMAAAALAAAAAAACAAAAAAALAAEAAAADAAEAAAALAAIAAAACAAIAAAAEAP//AAAAAAAAAAABAP//AAACAAAAAAAFAP//AAACAAAAAAAAAP//AAAAAAAAAAA=")
+
+[node name="Tetris" parent="." instance=ExtResource("3_b7opo")]
+tile_map_data = PackedByteArray("AAAHAAUAAAAAAAAAAAAIAAUAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAMAAAAAAAAAAAALAAUAAAAAAAAAAAALAAQAAAAAAAAAAAALAAMAAAAAAAAAAAAMAAQAAAAAAAAAAAARAAYAAAAAAAAAAAASAAUAAAAAAAAAAAASAAYAAAAAAAAAAAARAAUAAAAAAAAAAAABAAYAAAAAAAAAAAACAAYAAAAAAAAAAAADAAYAAAAAAAAAAAAEAAYAAAAAAAAAAAABAAMAAAAAAAAAAAABAAQAAAAAAAAAAAABAAUAAAAAAAAAAAACAAUAAAAAAAAAAAADAAUAAAAAAAAAAAADAAQAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAQAAAAAAAAAAAA=")
+
 [node name="Player2" parent="." instance=ExtResource("1_rj4p4")]
 modulate = Color(1, 0.360784, 0.129412, 1)
-position = Vector2(228, 228)
+position = Vector2(528, 219)
 player_id = 2
 
 [node name="Player" parent="." instance=ExtResource("1_rj4p4")]
-position = Vector2(109, 225)
-
-[node name="StaticWalls" type="Node" parent="."]
-
-[node name="Wall" parent="StaticWalls" instance=ExtResource("2_nys0b")]
-position = Vector2(32, 232)
-
-[node name="Wall2" parent="StaticWalls" instance=ExtResource("2_nys0b")]
-position = Vector2(32, 328)
-
-[node name="Wall3" parent="StaticWalls" instance=ExtResource("2_nys0b")]
-position = Vector2(64, 328)
-
-[node name="Wall4" parent="StaticWalls" instance=ExtResource("2_nys0b")]
-position = Vector2(96, 328)
-
-[node name="Wall5" parent="StaticWalls" instance=ExtResource("2_nys0b")]
-position = Vector2(128, 328)
-
-[node name="Wall6" parent="StaticWalls" instance=ExtResource("2_nys0b")]
-position = Vector2(160, 328)
-
-[node name="Wall7" parent="StaticWalls" instance=ExtResource("2_nys0b")]
-position = Vector2(192, 328)
-
-[node name="Wall8" parent="StaticWalls" instance=ExtResource("2_nys0b")]
-position = Vector2(224, 328)
-
-[node name="Wall9" parent="StaticWalls" instance=ExtResource("2_nys0b")]
-position = Vector2(256, 328)
+position = Vector2(81, 152)
