@@ -9,7 +9,9 @@ extends CharacterBody2D
 
 @onready var sprites: AnimatedSprite2D = $Sprites
 @onready var state_machine: StateMachine = $StateMachine
-@onready var spell_manager = $SpellManager
+@onready var spellCaster: Node = $SpellCaster
+@onready var spellTimer: Timer = $SpellCaster/SpellTimer
+@onready var spellPrepareSound: AudioStreamPlayer2D = $SpellCaster/SpellPrepareSound
 
 @onready var particlesJump = preload("res://entities/player/particles/particles_jump.tscn")
 
@@ -28,14 +30,3 @@ func _physics_process(delta: float) -> void:
 	# Apply gravity - this affects all states
 	if not is_on_floor():
 		velocity.y += gravity * delta
-	
-	handle_spells()
-	
-func handle_spells():
-	if Input.is_action_just_pressed("spell_A" + player_suffix):
-		spell_manager.cast_spell("A", global_position, facing_direction(), self)
-	elif Input.is_action_just_pressed("spell_B" + player_suffix):
-		spell_manager.cast_spell("B", global_position, facing_direction(), self)
-	
-func facing_direction() -> Vector2:
-	return Vector2.RIGHT if sprites.flip_h == false else Vector2.LEFT

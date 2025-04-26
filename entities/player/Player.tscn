@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bvgmojghht3fg"]
+[gd_scene load_steps=33 format=3 uid="uid://bvgmojghht3fg"]
 
 [ext_resource type="Script" uid="uid://cr1aln01r6hge" path="res://entities/player/state_machine.gd" id="1_453mm"]
 [ext_resource type="Script" uid="uid://vnrydtrqhxrl" path="res://entities/player/player.gd" id="1_eaotn"]
@@ -6,12 +6,19 @@
 [ext_resource type="Script" uid="uid://dm25h07jxr5ux" path="res://entities/player/scripts/states/move.gd" id="4_g3lhm"]
 [ext_resource type="Texture2D" uid="uid://60arr2da6gj8" path="res://entities/player/sprites/idle/player_idle1.png" id="5_2rv2u"]
 [ext_resource type="Script" uid="uid://br8h8wrffwuro" path="res://entities/player/scripts/states/jump.gd" id="5_mq27t"]
+[ext_resource type="Script" uid="uid://dub5218dy3twt" path="res://entities/player/scripts/states/block.gd" id="6_2fpie"]
+[ext_resource type="Script" uid="uid://bwy52uf730beh" path="res://entities/player/scripts/states/dragons_breath.gd" id="6_d168t"]
 [ext_resource type="Texture2D" uid="uid://dnukuj1yu65xr" path="res://entities/player/sprites/idle/player_idle2.png" id="6_mq27t"]
+[ext_resource type="Texture2D" uid="uid://cykxax4p5m4fr" path="res://entities/player/sprites/cast_spell/player_spell1.png" id="7_btcch"]
 [ext_resource type="Texture2D" uid="uid://n1w8flux63uy" path="res://entities/player/sprites/idle/player_idle3.png" id="7_kwk8g"]
 [ext_resource type="Texture2D" uid="uid://c4kgr7yanpe8r" path="res://entities/player/sprites/idle/player_idle4.png" id="8_2a181"]
+[ext_resource type="Texture2D" uid="uid://cc16p6n3nyx6v" path="res://entities/player/sprites/cast_spell/player_spell2.png" id="8_unwxu"]
+[ext_resource type="Texture2D" uid="uid://dulouc6t4wlu" path="res://entities/player/sprites/cast_spell/player_spell3.png" id="9_2fpie"]
 [ext_resource type="Texture2D" uid="uid://c8qcprxcrsvp3" path="res://entities/player/sprites/idle/player_idle5.png" id="9_aubru"]
 [ext_resource type="Texture2D" uid="uid://b5dpqwhan1kyu" path="res://entities/player/sprites/idle/player_idle6.png" id="10_ax5yc"]
+[ext_resource type="Texture2D" uid="uid://hogvqalfopfe" path="res://entities/player/sprites/cast_spell/player_spell4.png" id="10_i3i7k"]
 [ext_resource type="Texture2D" uid="uid://dy0hakl4cm77u" path="res://entities/player/sprites/idle/player_idle7.png" id="11_j531f"]
+[ext_resource type="Texture2D" uid="uid://dsu12khsy14h1" path="res://entities/player/sprites/cast_spell/player_spell5.png" id="11_m3vrt"]
 [ext_resource type="Texture2D" uid="uid://cs43k4ac4sgk0" path="res://entities/player/sprites/idle/player_idle8.png" id="12_npcl8"]
 [ext_resource type="Texture2D" uid="uid://ixx3n00u7pua" path="res://entities/player/sprites/walk/player_walk1.png" id="14_3uni3"]
 [ext_resource type="Script" uid="uid://ed70mysbkwg" path="res://entities/player/scripts/sprites.gd" id="14_kwk8g"]
@@ -26,6 +33,26 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4fbvh"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_btcch")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_unwxu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_2fpie")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_i3i7k")
+}, {
+"duration": 4.0,
+"texture": ExtResource("11_m3vrt")
+}],
+"loop": true,
+"name": &"cast_spell",
+"speed": 15.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("5_2rv2u")
@@ -104,17 +131,36 @@ script = ExtResource("4_g3lhm")
 [node name="Jump" type="Node" parent="StateMachine"]
 script = ExtResource("5_mq27t")
 
-[node name="Weapons" type="Node" parent="."]
+[node name="Block" type="Node" parent="StateMachine"]
+script = ExtResource("6_2fpie")
+
+[node name="DragonsBreath" type="Node" parent="StateMachine"]
+script = ExtResource("6_d168t")
+
+[node name="DragonsRaise" type="Node" parent="StateMachine"]
+script = ExtResource("6_d168t")
+
+[node name="BreezeSphere" type="Node" parent="StateMachine"]
+script = ExtResource("6_d168t")
 
 [node name="Sprites" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -13)
 sprite_frames = SubResource("SpriteFrames_4fbvh")
-animation = &"move"
+animation = &"cast_spell"
 script = ExtResource("14_kwk8g")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -13)
 shape = SubResource("CapsuleShape2D_mab2k")
 
-[node name="SpellManager" type="Node" parent="."]
+[node name="SpellCaster" type="Node" parent="."]
 script = ExtResource("24_oj2y3")
+
+[node name="SpellTimer" type="Timer" parent="SpellCaster"]
+one_shot = true
+
+[node name="SpellPrepareSound" type="AudioStreamPlayer2D" parent="SpellCaster"]
+
+[connection signal="timeout" from="SpellCaster/SpellTimer" to="StateMachine/DragonsBreath" method="_on_spell_timer_timeout"]
+[connection signal="timeout" from="SpellCaster/SpellTimer" to="StateMachine/DragonsRaise" method="_on_spell_timer_timeout"]
+[connection signal="timeout" from="SpellCaster/SpellTimer" to="StateMachine/BreezeSphere" method="_on_spell_timer_timeout"]

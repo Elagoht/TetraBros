@@ -1,6 +1,6 @@
-class_name Spell
-
 extends Area2D
+
+class_name Spell
 
 @export var damage: int = 10
 @export var speed: float = 500
@@ -8,9 +8,6 @@ extends Area2D
 
 func _ready():
 	$LifeTime.start()
-
-func _physics_process(delta):
-	position += transform.x * speed * delta
 
 func _on_area_entered(area):
 	if area.owner == fired_by:

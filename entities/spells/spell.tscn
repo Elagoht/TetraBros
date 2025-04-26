@@ -9,12 +9,15 @@ size = Vector2(100, 20)
 script = ExtResource("1_xwift")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(50, 0)
+position = Vector2(42, -15)
 shape = SubResource("RectangleShape2D_4qstg")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(50, 0)
+position = Vector2(42, -15)
 
 [node name="LifeTime" type="Timer" parent="."]
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+autoplay = true
 
 [connection signal="timeout" from="LifeTime" to="." method="_on_life_time_timeout"]

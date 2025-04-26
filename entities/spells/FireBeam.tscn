@@ -1,9 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://64l7gh2reaw6"]
+[gd_scene load_steps=5 format=3 uid="uid://64l7gh2reaw6"]
 
 [ext_resource type="PackedScene" uid="uid://dvi4mb1qf4p2m" path="res://entities/spells/spell.tscn" id="1_2tbjg"]
+[ext_resource type="Script" uid="uid://b7sg5hqgqrprc" path="res://entities/spells/scripts/fire_beam.gd" id="2_8aiin"]
 [ext_resource type="Texture2D" uid="uid://df4cbqciu48rk" path="res://entities/spells/sprites/dummy-fire.png" id="2_g2p6g"]
+[ext_resource type="AudioStream" uid="uid://bxo3xgkecrg0j" path="res://entities/spells/sounds/dragons_breath.ogg" id="3_j46te"]
 
 [node name="Spell" instance=ExtResource("1_2tbjg")]
+script = ExtResource("2_8aiin")
 
 [node name="Sprite" parent="." index="1"]
 texture = ExtResource("2_g2p6g")
+
+[node name="Audio" parent="." index="3"]
+stream = ExtResource("3_j46te")

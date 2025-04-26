@@ -8,7 +8,6 @@ func enter() -> void:
 	player_suffix = "_" + str(owner.player_id)
 	
 func physics_update(_delta: float) -> void:
-	
 	var direction_x: float = Input.get_axis("move_left" + player_suffix, "move_right" + player_suffix)
 
 	owner.velocity.x = direction_x * owner.speed
