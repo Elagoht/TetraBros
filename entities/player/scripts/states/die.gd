@@ -14,7 +14,6 @@ func enter() -> void:
 	$DieTimer.start()
 
 func _on_die_timer_timeout() -> void:
-	
 	var player = PLAYER.instantiate()
 	player.player_id = owner.player_id
 	player.global_position = Vector2(320, -20)

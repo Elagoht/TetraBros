@@ -21,9 +21,6 @@ scale = Vector2(0.999999, 0.999999)
 color = Color(0.968627, 0.960784, 0, 0.168627)
 shadow_enabled = true
 
-[node name="LaserTurret" parent="." instance=ExtResource("5_auxpv")]
-position = Vector2(36, 0)
-
 [node name="TileMapLayer" parent="." groups=["tile"] instance=ExtResource("1_ftj8y")]
 position = Vector2(224, 224)
 tile_map_data = PackedByteArray("AAD6/wEAAAAAAAEAAAD6/wIAAAAAAAIAAAD7/wIAAAABAAIAAAD8/wIAAAACAAIAAAD8/wEAAAADAAEAAAD8/wAAAAACAAAAAAD7/wAAAAAEAAIAAAD7/wEAAAABAAEAAAD6/wAAAAAAAAAAAAD//wIAAAABAAMAAAAAAAIAAAADAAMAAAAFAAIAAAABAAMAAAAJAAIAAAAAAAIAAAAKAAIAAAABAAIAAAAKAAEAAAABAAEAAAAKAAAAAAAEAAIAAAAJAAAAAAAAAAAAAAAJAAEAAAAAAAEAAAAGAAIAAAADAAMAAAALAAAAAAACAAAAAAALAAEAAAADAAEAAAALAAIAAAACAAIAAAABAAQAAAABAAMAAAACAAQAAAACAAMAAAADAAQAAAACAAMAAAAEAAQAAAADAAMAAAA=")
@@ -37,5 +34,9 @@ player_id = 2
 
 [node name="Player" parent="." instance=ExtResource("1_rj4p4")]
 position = Vector2(81, 152)
+
+[node name="LaserTurret" parent="." instance=ExtResource("5_auxpv")]
+top_level = true
+position = Vector2(36, 0)
 
 [node name="ScoreBoard" parent="." instance=ExtResource("6_o1ysh")]

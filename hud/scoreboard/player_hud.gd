@@ -16,7 +16,7 @@ func update_score(new_score: int) -> void:
 	for i in range(3):
 		var star = TextureRect.new()
 		star.texture = star_resource
-		star.modulate = Color(1, 1, 1) if i < new_score else Color(0.5, 0.5, 0.5)
+		star.modulate = Color(1, 1, 1) if i < new_score else Color(0, 0, 0)
 		stars.append(star)
 
 	if revert:

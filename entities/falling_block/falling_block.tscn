@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bt0hyqc165xjp" path="res://entities/falling_block/scripts/falling_block.gd" id="1_kq42p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kq42p"]
-size = Vector2(30, 30)
+size = Vector2(32, 31)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c7iss"]
 size = Vector2(22, 1)
@@ -18,7 +18,7 @@ position = Vector2(16, 16)
 texture = ExtResource("1_bf2ob")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(16, 16)
+position = Vector2(16, 15.5)
 shape = SubResource("RectangleShape2D_kq42p")
 
 [node name="Area2D" type="Area2D" parent="."]

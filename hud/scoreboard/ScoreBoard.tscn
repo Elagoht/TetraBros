@@ -3,10 +3,13 @@
 [ext_resource type="Script" uid="uid://c6j8mudbhvydb" path="res://hud/scoreboard/score_board.gd" id="1_eipgc"]
 [ext_resource type="PackedScene" uid="uid://kki1dbdcnjfp" path="res://hud/scoreboard/player_hud.tscn" id="1_hojm0"]
 
-[node name="ScoreBoard" type="Control"]
+[node name="ScoreBoard" type="Control" node_paths=PackedStringArray("player_hud", "player_2hud")]
+top_level = true
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_eipgc")
+player_hud = NodePath("PlayerHUD")
+player_2hud = NodePath("Player2HUD")
 
 [node name="PlayerHUD" parent="." instance=ExtResource("1_hojm0")]
 layout_mode = 2

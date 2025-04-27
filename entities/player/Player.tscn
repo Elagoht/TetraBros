@@ -293,6 +293,7 @@ one_shot = true
 [node name="SpellPrepareSound" type="AudioStreamPlayer2D" parent="SpellCaster"]
 
 [node name="Sphere" type="Sprite2D" parent="."]
+visibility_layer = 2
 position = Vector2(0, -14)
 texture = ExtResource("36_ck0hy")
 script = ExtResource("37_fs2qx")

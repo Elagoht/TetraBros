@@ -15,6 +15,10 @@ run/main_scene="uid://cbrw6lijdpoon"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+ScoreBoard="*res://hud/scoreboard/score_board.gd"
+
 [display]
 
 window/size/viewport_width=640

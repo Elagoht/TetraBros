@@ -1,15 +1,19 @@
 extends Control
 
-@onready var huds := [
-	$PlayerHUD,
-	$Player2HUD
-]
+@export var player_hud: VBoxContainer
+@export var player_2hud: VBoxContainer
 
-@onready var score = Vector2i(2, 1)
+@onready var score = Vector2i(0, 0)
 
 func _ready() -> void:
 	update_scoreboard()
 
+func score_to_player(id: int) -> void:
+	score[id] += 1
+	update_scoreboard()
+
 func update_scoreboard() -> void:
-	for player in range(2):
-		huds[player].update_score(score.x if player == 0 else score.y)
+	if player_hud:
+		player_hud.update_score(score.x)
+	if player_2hud:
+		player_2hud.update_score(score.y)
