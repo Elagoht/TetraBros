@@ -3,6 +3,7 @@ extends VBoxContainer
 @export var player_name: String = ""
 @export var id: int = 0
 @export var revert: bool = false
+
 const star_resource = preload("res://hud/scoreboard/star.png")
 
 func _ready() -> void:
