@@ -5,7 +5,7 @@ extends Control
 	$Player2HUD
 ]
 
-@onready var score = Vector2i(2,1)
+@onready var score = Vector2i(2, 1)
 
 func _ready() -> void:
 	update_scoreboard()
