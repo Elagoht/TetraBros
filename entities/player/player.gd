@@ -11,7 +11,6 @@ class_name Player
 @onready var jump_count: int = 0
 @onready var sprites: AnimatedSprite2D = $Sprites
 @onready var state_machine: StateMachine = $StateMachine
-@onready var spellCaster: Node = $SpellCaster
 @onready var spellTimer: Timer = $SpellCaster/SpellTimer
 @onready var spellPrepareSound: AudioStreamPlayer2D = $SpellCaster/SpellPrepareSound
 
@@ -20,6 +19,12 @@ class_name Player
 var player_suffix: String
 var is_stunned: bool = false
 var sphere_opacity_target: float = 0
+
+func get_direciton() -> Vector2i:
+	if $"Sprites".flip_h:
+		return Vector2i.LEFT
+	else:
+		return Vector2i.RIGHT
 
 func _ready() -> void:
 	player_suffix = "_" + str(player_id)
@@ -32,14 +37,13 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	void_death()
+	
+	if is_on_floor():
+		jump_count = 0
 
 	# Apply gravity - this affects all states
 	if not is_on_floor():
 		velocity.y += gravity * delta
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("spell_A" + player_suffix) or event.is_action_pressed("spell_B" + player_suffix):
-		spellCaster.cast_spell(self)
 
 func stun_player() -> void:
 	is_stunned = true
