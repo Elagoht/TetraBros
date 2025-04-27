@@ -10,7 +10,7 @@ default_font_size = 64
 
 [sub_resource type="Theme" id="Theme_br8jl"]
 default_font = ExtResource("2_br8jl")
-default_font_size = 64
+default_font_size = 24
 
 [node name="Winner" type="Node2D"]
 
@@ -29,12 +29,13 @@ text = "Player 1 won!"
 script = ExtResource("2_u4o8b")
 
 [node name="WinnerLabel2" type="Label" parent="."]
-offset_left = 153.0
-offset_top = 149.0
-offset_right = 493.0
-offset_bottom = 213.0
+offset_left = -46.0
+offset_top = 241.0
+offset_right = 714.0
+offset_bottom = 305.0
 theme = SubResource("Theme_br8jl")
 text = "Press Any Button to Restart"
+horizontal_alignment = 1
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
