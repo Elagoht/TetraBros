@@ -11,3 +11,7 @@ func _ready() -> void:
 		state_machine.transition_to("initialize")
 	else:
 		push_error("State machine not found!")
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("ui_accept"):
+		state_machine.transition_to("fire")

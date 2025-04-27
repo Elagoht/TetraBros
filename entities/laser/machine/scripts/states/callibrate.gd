@@ -17,5 +17,5 @@ func _process(delta: float) -> void:
 	var current_y = turret_head.position.y
 	turret_head.position.y = move_toward(current_y, target_y + 16, 300.0 * delta)
 
-	if abs(current_y - target_y) < 1.0:
-		owner.state_machine.transition_to("Idle")
+	if abs(current_y - target_y) < 10.0:
+		owner.state_machine.transition_to("fire")
