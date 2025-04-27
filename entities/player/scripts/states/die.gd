@@ -24,8 +24,6 @@ func _on_die_timer_timeout() -> void:
 	get_tree().current_scene.add_child(player)
 	state_machine.transition_to("idle")
 
-signal player_died(player: Player)
-
 func exit() -> void:
 	owner.queue_free()
 	emit_signal("player_died", owner)
