@@ -1,0 +1,43 @@
+[gd_scene load_steps=9 format=3 uid="uid://cic6crxgmxrso"]
+
+[ext_resource type="Texture2D" uid="uid://d2xlopt12eks7" path="res://entities/laser/machine/sprites/turretline.png" id="1_23lwg"]
+[ext_resource type="Script" uid="uid://png63eqb5dl3" path="res://entities/laser/machine/laser_turret.gd" id="1_wcgv8"]
+[ext_resource type="Texture2D" uid="uid://bw0x826t6efvv" path="res://entities/laser/machine/sprites/turret.png" id="2_8i5oh"]
+[ext_resource type="Script" uid="uid://cr1aln01r6hge" path="res://entities/player/state_machine.gd" id="3_2utl2"]
+[ext_resource type="Script" uid="uid://ouy84ooehlo7" path="res://entities/laser/machine/scripts/states/initialize.gd" id="4_2hc4y"]
+[ext_resource type="Script" uid="uid://c2swncx8obg2v" path="res://entities/laser/machine/scripts/states/callibrate.gd" id="5_fpthx"]
+[ext_resource type="Script" uid="uid://b7qwkah83uvso" path="res://entities/laser/machine/scripts/states/idle.gd" id="7_tal0h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wcgv8"]
+size = Vector2(14, 360)
+
+[node name="LaserTurret" type="Area2D"]
+script = ExtResource("1_wcgv8")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(-21, 180)
+shape = SubResource("RectangleShape2D_wcgv8")
+
+[node name="Bar" type="Sprite2D" parent="."]
+position = Vector2(-16, 180)
+texture = ExtResource("1_23lwg")
+
+[node name="TurretHead" type="Sprite2D" parent="."]
+position = Vector2(-16, 16)
+texture = ExtResource("2_8i5oh")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("3_2utl2")
+metadata/_custom_type_script = "uid://cr1aln01r6hge"
+
+[node name="Initialize" type="Node" parent="StateMachine"]
+script = ExtResource("4_2hc4y")
+metadata/_custom_type_script = "uid://b0arsyelrqu61"
+
+[node name="Callibrate" type="Node" parent="StateMachine"]
+script = ExtResource("5_fpthx")
+metadata/_custom_type_script = "uid://b0arsyelrqu61"
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("7_tal0h")
+metadata/_custom_type_script = "uid://b0arsyelrqu61"

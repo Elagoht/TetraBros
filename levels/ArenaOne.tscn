@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://ckqx7wils74w3"]
+[gd_scene load_steps=6 format=4 uid="uid://ckqx7wils74w3"]
 
 [ext_resource type="PackedScene" uid="uid://pc6yh8yh6t1t" path="res://environment/tilemaps/static.tscn" id="1_ftj8y"]
 [ext_resource type="PackedScene" uid="uid://bvgmojghht3fg" path="res://entities/player/Player.tscn" id="1_rj4p4"]
 [ext_resource type="PackedScene" uid="uid://cv5eqjnj6v6i7" path="res://environment/tilemaps/tetris.tscn" id="3_b7opo"]
 [ext_resource type="Texture2D" uid="uid://d1t00tktunkj5" path="res://environment/tilemaps/Background.png" id="3_ftj8y"]
+[ext_resource type="PackedScene" uid="uid://cic6crxgmxrso" path="res://entities/laser/machine/laser_turret.tscn" id="5_auxpv"]
 
 [node name="ArenaOne" type="Node2D"]
 
@@ -12,12 +13,15 @@ position = Vector2(320, 180)
 scale = Vector2(1.11111, 1.11111)
 texture = ExtResource("3_ftj8y")
 
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Background"]
-position = Vector2(-292.5, -154.8)
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+position = Vector2(-4.99966, 8.00017)
 rotation = -0.872665
-scale = Vector2(0.9, 0.9)
+scale = Vector2(0.999999, 0.999999)
 color = Color(0.968627, 0.960784, 0, 0.168627)
 shadow_enabled = true
+
+[node name="LaserTurret" parent="." instance=ExtResource("5_auxpv")]
+position = Vector2(36, 0)
 
 [node name="TileMapLayer" parent="." instance=ExtResource("1_ftj8y")]
 position = Vector2(224, 224)
