@@ -11,9 +11,12 @@ config_version=5
 [application]
 
 config/name="TetraBros"
+config/version="0.1"
 run/main_scene="uid://cbrw6lijdpoon"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.299429, 0.122728, 0.0914727, 1)
+boot_splash/image="uid://e7nqlj4y33v7"
+config/icon="uid://e7nqlj4y33v7"
 
 [autoload]
 
