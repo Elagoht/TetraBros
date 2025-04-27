@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://bvgmojghht3fg"]
+[gd_scene load_steps=46 format=3 uid="uid://bvgmojghht3fg"]
 
 [ext_resource type="Script" uid="uid://cr1aln01r6hge" path="res://entities/player/state_machine.gd" id="1_453mm"]
 [ext_resource type="Script" uid="uid://vnrydtrqhxrl" path="res://entities/player/player.gd" id="1_eaotn"]
@@ -36,6 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://decarsea3kydu" path="res://entities/player/sprites/walk/player_walk8.png" id="21_unwxu"]
 [ext_resource type="Script" uid="uid://bbaj2soa4mlt5" path="res://entities/player/scripts/states/stunned.gd" id="30_stunned"]
 [ext_resource type="Texture2D" uid="uid://vpvfypat5m3t" path="res://entities/player/sprites/block/sphere.png" id="36_ck0hy"]
+[ext_resource type="AudioStream" uid="uid://ddhjvkhvjn5mp" path="res://entities/player/sounds/dragonsbreath_casting.ogg" id="36_f2vir"]
 [ext_resource type="Script" uid="uid://cnddq2iss3bg7" path="res://entities/player/scripts/sphere.gd" id="37_fs2qx"]
 [ext_resource type="Script" uid="uid://bnkjtshxb0dth" path="res://entities/player/scripts/scoreboard.gd" id="38_g3kjw"]
 
@@ -222,6 +223,10 @@ func get_spell_scn(caster: Player) -> PackedScene:
 	return spells[state][action]
 "
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f2vir"]
+radius = 20.0
+height = 56.0
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_eaotn")
 
@@ -292,12 +297,19 @@ one_shot = true
 [node name="CooldownTimer" type="Timer" parent="SpellCaster"]
 
 [node name="SpellPrepareSound" type="AudioStreamPlayer2D" parent="SpellCaster"]
+stream = ExtResource("36_f2vir")
 
 [node name="Sphere" type="Sprite2D" parent="."]
 visibility_layer = 2
 position = Vector2(0, -14)
 texture = ExtResource("36_ck0hy")
 script = ExtResource("37_fs2qx")
+
+[node name="SphereArea" type="Area2D" parent="Sphere"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sphere/SphereArea"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_f2vir")
 
 [node name="Score" type="CanvasLayer" parent="."]
 script = ExtResource("38_g3kjw")

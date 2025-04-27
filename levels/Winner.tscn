@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://df3banyv4b7a1"]
+[gd_scene load_steps=5 format=3 uid="uid://df3banyv4b7a1"]
 
 [ext_resource type="Texture2D" uid="uid://d1t00tktunkj5" path="res://environment/tilemaps/Background.png" id="1_bfho5"]
 [ext_resource type="FontFile" uid="uid://lawbeh6q3yw7" path="res://fonts/KiwiSoda.ttf" id="2_br8jl"]
@@ -7,10 +7,6 @@
 [sub_resource type="Theme" id="Theme_cyj6x"]
 default_font = ExtResource("2_br8jl")
 default_font_size = 64
-
-[sub_resource type="Theme" id="Theme_br8jl"]
-default_font = ExtResource("2_br8jl")
-default_font_size = 24
 
 [node name="Winner" type="Node2D"]
 
@@ -27,19 +23,3 @@ offset_bottom = 213.0
 theme = SubResource("Theme_cyj6x")
 text = "Player 1 won!"
 script = ExtResource("2_u4o8b")
-
-[node name="WinnerLabel2" type="Label" parent="."]
-offset_left = -46.0
-offset_top = 241.0
-offset_right = 714.0
-offset_bottom = 305.0
-theme = SubResource("Theme_br8jl")
-text = "Press Any Button to Restart"
-horizontal_alignment = 1
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
-one_shot = true
-autostart = true
-
-[connection signal="timeout" from="Timer" to="WinnerLabel" method="_on_timer_timeout"]

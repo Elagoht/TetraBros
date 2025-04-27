@@ -4,7 +4,9 @@ extends Node2D
 @onready var state_machine: StateMachine = $StateMachine
 
 func _ready() -> void:
-	await get_tree().process_frame
+	if is_inside_tree():
+		await get_tree().process_frame
+
 	if state_machine:
 		state_machine.transition_to("initialize")
 	else:

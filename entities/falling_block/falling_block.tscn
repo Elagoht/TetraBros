@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0r5q0hi88x0v"]
+[gd_scene load_steps=6 format=3 uid="uid://b0r5q0hi88x0v"]
 
 [ext_resource type="Texture2D" uid="uid://bxn8n4mlsdsb" path="res://environment/tilemaps/block.png" id="1_bf2ob"]
 [ext_resource type="Script" uid="uid://bt0hyqc165xjp" path="res://entities/falling_block/scripts/falling_block.gd" id="1_kq42p"]
+[ext_resource type="AudioStream" uid="uid://ddhjvkhvjn5mp" path="res://entities/player/sounds/dragonsbreath_casting.ogg" id="3_c7iss"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kq42p"]
 size = Vector2(32, 31)
@@ -9,7 +10,7 @@ size = Vector2(32, 31)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c7iss"]
 size = Vector2(22, 1)
 
-[node name="FallingBlock" type="AnimatableBody2D"]
+[node name="FallingBlock" type="AnimatableBody2D" groups=["tile"]]
 sync_to_physics = false
 script = ExtResource("1_kq42p")
 
@@ -21,7 +22,7 @@ texture = ExtResource("1_bf2ob")
 position = Vector2(16, 15.5)
 shape = SubResource("RectangleShape2D_kq42p")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["tile"]]
 
 [node name="BottomCollider" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(16, 31.5)
@@ -31,5 +32,8 @@ shape = SubResource("RectangleShape2D_c7iss")
 position = Vector2(16, 31)
 target_position = Vector2(0, 2)
 collision_mask = 2
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_c7iss")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

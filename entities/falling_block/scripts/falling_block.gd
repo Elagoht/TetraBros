@@ -10,8 +10,8 @@ class_name FallingBlock
 @onready var ground_ray: RayCast2D = $RayCast2D
 
 func world_to_tile(world_position: Vector2) -> Vector2i:
-	var x = int(world_position.x/32)
-	var y = int(world_position.y/32)
+	var x = int(world_position.x / 32)
+	var y = int(world_position.y / 32)
 	return Vector2i(x, y)
 
 func _ready() -> void:
@@ -28,11 +28,11 @@ func _process(_delta: float) -> void:
 			make_solid()
 
 func _physics_process(delta: float) -> void:
-	position.y += speed*delta
+	position.y += speed * delta
 
 func make_solid():
 	tetris.decrease_falling_block_count(1)
-	var tile_position = world_to_tile(position+Vector2(16, 16))
+	var tile_position = world_to_tile(position + Vector2(16, 16))
 	tilemap.set_cell(tile_position, 0, Vector2i(0, 0))
 	queue_free()
 

@@ -6,7 +6,7 @@ func enter() -> void:
 	owner.sprites.play("cast_spell")
 	$Spell1Timer.start(0.7)
 	owner.velocity = Vector2.ZERO
-
+	$"../../SpellCaster/SpellPrepareSound".play()
 func update(_delta: float) -> void:
 	pass
 

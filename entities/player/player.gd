@@ -29,7 +29,8 @@ func get_direciton() -> Vector2i:
 func _ready() -> void:
 	player_suffix = "_" + str(player_id)
 
-	await get_tree().process_frame
+	if is_inside_tree():
+		await get_tree().process_frame
 	if state_machine:
 		state_machine.transition_to("idle")
 	else:

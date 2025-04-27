@@ -20,10 +20,9 @@ func enter() -> void:
 func _on_die_timer_timeout() -> void:
 	var player = PLAYER.instantiate()
 	player.player_id = owner.player_id
-	player.global_position = Vector2(320, -20)
+	player.global_position = Vector2(320, 20)
 	get_tree().current_scene.add_child(player)
 	state_machine.transition_to("idle")
 
 func exit() -> void:
 	owner.queue_free()
-	emit_signal("player_died", owner)
