@@ -17,7 +17,7 @@ func _ready() -> void:
 	tetris = get_parent()
 	tilemap = tetris.get_node("Tilemap")
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if position.y > 392:
 		tetris.decrease_falling_block_count(1)
 		queue_free()
