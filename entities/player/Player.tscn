@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://bvgmojghht3fg"]
+[gd_scene load_steps=42 format=3 uid="uid://bvgmojghht3fg"]
 
 [ext_resource type="Script" uid="uid://cr1aln01r6hge" path="res://entities/player/state_machine.gd" id="1_453mm"]
 [ext_resource type="Script" uid="uid://vnrydtrqhxrl" path="res://entities/player/player.gd" id="1_eaotn"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://60arr2da6gj8" path="res://entities/player/sprites/idle/player_idle1.png" id="5_2rv2u"]
 [ext_resource type="Script" uid="uid://br8h8wrffwuro" path="res://entities/player/scripts/states/jump.gd" id="5_mq27t"]
 [ext_resource type="Script" uid="uid://dub5218dy3twt" path="res://entities/player/scripts/states/block.gd" id="6_2fpie"]
-[ext_resource type="Script" uid="uid://bwy52uf730beh" path="res://entities/player/scripts/states/cast_spell.gd" id="6_d168t"]
 [ext_resource type="Texture2D" uid="uid://dnukuj1yu65xr" path="res://entities/player/sprites/idle/player_idle2.png" id="6_mq27t"]
 [ext_resource type="Texture2D" uid="uid://cykxax4p5m4fr" path="res://entities/player/sprites/cast_spell/player_spell1.png" id="7_btcch"]
 [ext_resource type="Texture2D" uid="uid://n1w8flux63uy" path="res://entities/player/sprites/idle/player_idle3.png" id="7_kwk8g"]
@@ -36,12 +35,14 @@
 [ext_resource type="Texture2D" uid="uid://decarsea3kydu" path="res://entities/player/sprites/walk/player_walk8.png" id="21_unwxu"]
 [ext_resource type="Script" uid="uid://cgm6hqpm18avv" path="res://entities/player/scripts/spell_manager.gd" id="24_oj2y3"]
 [ext_resource type="Script" uid="uid://bbaj2soa4mlt5" path="res://entities/player/scripts/states/stunned.gd" id="30_stunned"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5qbdv"]
-size = Vector2(12, 26)
+[ext_resource type="Texture2D" uid="uid://vpvfypat5m3t" path="res://entities/player/sprites/block/sphere.png" id="36_ck0hy"]
+[ext_resource type="Script" uid="uid://cnddq2iss3bg7" path="res://entities/player/scripts/sphere.gd" id="37_fs2qx"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_5qbdv"]
 polygon = PackedVector2Array(-7, -23, -4, -26, 2, -26, 4, -24, 5, -13, 5, -6, 4, 0, -5, 0, -7, -17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5qbdv"]
+size = Vector2(12, 26)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mab2k"]
 radius = 5.5
@@ -168,7 +169,11 @@ animations = [{
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_eaotn")
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_5qbdv")
+
 [node name="HitBox" type="Area2D" parent="." groups=["player"]]
+unique_name_in_owner = true
 script = ExtResource("2_m1mwl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
@@ -176,10 +181,8 @@ position = Vector2(-1, -13)
 shape = SubResource("RectangleShape2D_5qbdv")
 debug_color = Color(0.705982, 0.354102, 0.852365, 0.42)
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-occluder = SubResource("OccluderPolygon2D_5qbdv")
-
 [node name="Collision" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(-0.5, -13)
 shape = SubResource("CapsuleShape2D_mab2k")
 
@@ -201,17 +204,9 @@ script = ExtResource("6_2fpie")
 [node name="Stunned" type="Node" parent="StateMachine"]
 script = ExtResource("30_stunned")
 
-[node name="DragonsBreath" type="Node" parent="StateMachine"]
-script = ExtResource("6_d168t")
-spell_name = "dragonsbreath"
-
-[node name="DragonsRaise" type="Node" parent="StateMachine"]
-script = ExtResource("6_d168t")
-spell_name = "dragonsraise"
-
-[node name="BreezeSphere" type="Node" parent="StateMachine"]
-script = ExtResource("6_d168t")
-spell_name = "breezesphere"
+[node name="StunnedTimer" type="Timer" parent="StateMachine/Stunned"]
+wait_time = 3.0
+one_shot = true
 
 [node name="Die" type="Node" parent="StateMachine"]
 script = ExtResource("10_ck0hy")
@@ -228,8 +223,13 @@ script = ExtResource("24_oj2y3")
 [node name="SpellTimer" type="Timer" parent="SpellCaster"]
 one_shot = true
 
+[node name="CooldownTimer" type="Timer" parent="SpellCaster"]
+
 [node name="SpellPrepareSound" type="AudioStreamPlayer2D" parent="SpellCaster"]
 
-[connection signal="timeout" from="SpellCaster/SpellTimer" to="StateMachine/DragonsBreath" method="_on_spell_timer_timeout"]
-[connection signal="timeout" from="SpellCaster/SpellTimer" to="StateMachine/DragonsRaise" method="_on_spell_timer_timeout"]
-[connection signal="timeout" from="SpellCaster/SpellTimer" to="StateMachine/BreezeSphere" method="_on_spell_timer_timeout"]
+[node name="Sphere" type="Sprite2D" parent="."]
+position = Vector2(0, -14)
+texture = ExtResource("36_ck0hy")
+script = ExtResource("37_fs2qx")
+
+[connection signal="timeout" from="StateMachine/Stunned/StunnedTimer" to="StateMachine/Stunned" method="_on_timer_timeout"]

@@ -10,6 +10,7 @@ default_font = ExtResource("2_i3tah")
 offset_right = 320.0
 offset_bottom = 64.0
 script = ExtResource("1_11wgq")
+metadata/_edit_lock_ = true
 
 [node name="PlayerName" type="Label" parent="."]
 layout_mode = 2

@@ -9,7 +9,6 @@ class_name Player
 @export var health: int = 10
 
 @onready var jump_count: int = 0
-
 @onready var sprites: AnimatedSprite2D = $Sprites
 @onready var state_machine: StateMachine = $StateMachine
 @onready var spellCaster: Node = $SpellCaster
@@ -20,27 +19,34 @@ class_name Player
 
 var player_suffix: String
 var is_stunned: bool = false
+var sphere_opacity_target: float = 0
 
 func _ready() -> void:
 	player_suffix = "_" + str(player_id)
-	
+
 	await get_tree().process_frame
 	if state_machine:
 		state_machine.transition_to("idle")
 	else:
 		push_error("State machine not found!")
-		
+
 func _physics_process(delta: float) -> void:
+	void_death()
+
 	# Apply gravity - this affects all states
 	if not is_on_floor():
 		velocity.y += gravity * delta
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("spell_A" + player_suffix) or event.is_action_pressed("spell_B" + player_suffix):
+		spellCaster.cast_spell(self)
 
 func stun_player() -> void:
 	is_stunned = true
 	if state_machine:
 		state_machine.transition_to("stunned")
 
-func renew_health():
+func renew_health() -> void:
 	health = 10
 	is_stunned = false
 	if state_machine:
@@ -49,5 +55,9 @@ func renew_health():
 func apply_knockback(knockback: Vector2) -> void:
 	velocity = knockback
 
-func die():
+func die() -> void:
 	state_machine.transition_to("die")
+
+func void_death() -> void:
+	if global_position.y > 600:
+		die()

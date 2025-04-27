@@ -1,6 +1,11 @@
 extends State
 
-func ready() -> void:
+@onready var timer: Timer = $DieTimer
+
+func enter() -> void:
 	owner.sprites.play("die")
-	$"../../Collision".queue_free()
-	$"../../HitBox".queue_free()
+	owner.global_position = Vector2(320, -20)
+	owner.renew_health()
+
+func physics_update(_delta: float) -> void:
+	owner.move_and_slide()
