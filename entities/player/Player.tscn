@@ -266,7 +266,6 @@ script = ExtResource("6_2fpie")
 script = ExtResource("30_stunned")
 
 [node name="StunnedTimer" type="Timer" parent="StateMachine/Stunned"]
-wait_time = 3.0
 one_shot = true
 
 [node name="Die" type="Node" parent="StateMachine"]

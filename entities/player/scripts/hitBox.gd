@@ -8,6 +8,7 @@ func take_damage(amount: int = 1, knockback: Vector2 = Vector2.ZERO) -> void:
 
 	if knockback != Vector2.ZERO and owner.has_method("apply_knockback"):
 		owner.apply_knockback(knockback)
+		owner.take_damage(1)
 
 	if owner.health <= 0:
 		owner.health = 0

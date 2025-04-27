@@ -20,6 +20,7 @@ func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("player"):
 		if area.owner != fired_by:
 			area.owner.apply_knockback(direction*100)
+			area.take_damage(1)
 			queue_free()
 
 	if area.is_in_group("block"):
