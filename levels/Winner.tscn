@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://df3banyv4b7a1"]
+
+[ext_resource type="Texture2D" uid="uid://d1t00tktunkj5" path="res://environment/tilemaps/Background.png" id="1_bfho5"]
+[ext_resource type="FontFile" uid="uid://lawbeh6q3yw7" path="res://fonts/KiwiSoda.ttf" id="2_br8jl"]
+[ext_resource type="Script" uid="uid://cv8f46jgywa2l" path="res://levels/winner.gd" id="2_u4o8b"]
+
+[sub_resource type="Theme" id="Theme_cyj6x"]
+default_font = ExtResource("2_br8jl")
+default_font_size = 64
+
+[node name="Winner" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(320, 180)
+scale = Vector2(1.11111, 1.11111)
+texture = ExtResource("1_bfho5")
+
+[node name="WinnerLabel" type="Label" parent="."]
+offset_left = 153.0
+offset_top = 149.0
+offset_right = 493.0
+offset_bottom = 213.0
+theme = SubResource("Theme_cyj6x")
+text = "Player 1 won!"
+script = ExtResource("2_u4o8b")

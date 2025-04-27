@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://bvgmojghht3fg"]
+[gd_scene load_steps=44 format=3 uid="uid://bvgmojghht3fg"]
 
 [ext_resource type="Script" uid="uid://cr1aln01r6hge" path="res://entities/player/state_machine.gd" id="1_453mm"]
 [ext_resource type="Script" uid="uid://vnrydtrqhxrl" path="res://entities/player/player.gd" id="1_eaotn"]
@@ -37,6 +37,7 @@
 [ext_resource type="Script" uid="uid://bbaj2soa4mlt5" path="res://entities/player/scripts/states/stunned.gd" id="30_stunned"]
 [ext_resource type="Texture2D" uid="uid://vpvfypat5m3t" path="res://entities/player/sprites/block/sphere.png" id="36_ck0hy"]
 [ext_resource type="Script" uid="uid://cnddq2iss3bg7" path="res://entities/player/scripts/sphere.gd" id="37_fs2qx"]
+[ext_resource type="Script" uid="uid://bnkjtshxb0dth" path="res://entities/player/scripts/scoreboard.gd" id="38_g3kjw"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_5qbdv"]
 polygon = PackedVector2Array(-7, -23, -4, -26, 2, -26, 4, -24, 5, -13, 5, -6, 4, 0, -5, 0, -7, -17)
@@ -297,6 +298,9 @@ visibility_layer = 2
 position = Vector2(0, -14)
 texture = ExtResource("36_ck0hy")
 script = ExtResource("37_fs2qx")
+
+[node name="Score" type="CanvasLayer" parent="."]
+script = ExtResource("38_g3kjw")
 
 [connection signal="timeout" from="StateMachine/Stunned/StunnedTimer" to="StateMachine/Stunned" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Die/DieTimer" to="StateMachine/Die" method="_on_die_timer_timeout"]

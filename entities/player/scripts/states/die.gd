@@ -4,6 +4,7 @@ extends State
 @onready var collision: CollisionShape2D = %Collision
 
 const PLAYER = preload("res://entities/player/Player.tscn")
+@onready var score: CanvasLayer = $"../../Score"
 
 func enter() -> void:
 	owner.sprites.play("die")
@@ -12,6 +13,9 @@ func enter() -> void:
 	if owner.global_position.y > 500:
 		owner.global_position = Vector2(320, 500)
 	$DieTimer.start()
+
+	Score.score[owner.player_id - 1] += 1
+	score.refresh_stars()
 
 func _on_die_timer_timeout() -> void:
 	var player = PLAYER.instantiate()

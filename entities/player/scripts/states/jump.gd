@@ -26,7 +26,7 @@ func physics_update(_delta: float) -> void:
 			state_machine.transition_to("move")
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("move_up" + player_suffix):
+	if event.is_action_pressed("move_up" +  "_" + str(owner.player_id)):
 		owner.jump_count += 1
 
 func handle_input(event: InputEvent) -> void:

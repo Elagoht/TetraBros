@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://ckqx7wils74w3"]
+[gd_scene load_steps=6 format=4 uid="uid://ckqx7wils74w3"]
 
 [ext_resource type="PackedScene" uid="uid://pc6yh8yh6t1t" path="res://environment/tilemaps/static.tscn" id="1_ftj8y"]
 [ext_resource type="PackedScene" uid="uid://bvgmojghht3fg" path="res://entities/player/Player.tscn" id="1_rj4p4"]
 [ext_resource type="PackedScene" uid="uid://cv5eqjnj6v6i7" path="res://environment/tilemaps/tetris.tscn" id="3_b7opo"]
 [ext_resource type="Texture2D" uid="uid://d1t00tktunkj5" path="res://environment/tilemaps/Background.png" id="3_ftj8y"]
 [ext_resource type="PackedScene" uid="uid://cic6crxgmxrso" path="res://entities/laser/machine/laser_turret.tscn" id="5_auxpv"]
-[ext_resource type="PackedScene" uid="uid://dldc6kn3d51mx" path="res://hud/scoreboard/ScoreBoard.tscn" id="6_o1ysh"]
 
 [node name="ArenaOne" type="Node2D"]
 
@@ -38,5 +37,3 @@ position = Vector2(81, 152)
 [node name="LaserTurret" parent="." instance=ExtResource("5_auxpv")]
 top_level = true
 position = Vector2(36, 0)
-
-[node name="ScoreBoard" parent="." instance=ExtResource("6_o1ysh")]
