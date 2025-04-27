@@ -59,5 +59,7 @@ func die() -> void:
 	state_machine.transition_to("die")
 
 func void_death() -> void:
-	if global_position.y > 600:
-		die()
+	if  state_machine.current_state:
+		if state_machine.current_state.name != "die":
+			if global_position.y > 600:
+				die()

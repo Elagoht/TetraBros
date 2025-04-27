@@ -211,6 +211,9 @@ one_shot = true
 [node name="Die" type="Node" parent="StateMachine"]
 script = ExtResource("10_ck0hy")
 
+[node name="DieTimer" type="Timer" parent="StateMachine/Die"]
+one_shot = true
+
 [node name="Sprites" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -13)
 sprite_frames = SubResource("SpriteFrames_4fbvh")
@@ -233,3 +236,4 @@ texture = ExtResource("36_ck0hy")
 script = ExtResource("37_fs2qx")
 
 [connection signal="timeout" from="StateMachine/Stunned/StunnedTimer" to="StateMachine/Stunned" method="_on_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Die/DieTimer" to="StateMachine/Die" method="_on_die_timer_timeout"]
