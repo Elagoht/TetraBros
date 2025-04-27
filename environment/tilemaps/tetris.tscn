@@ -18,7 +18,8 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSet" id="TileSet_ve08m"]
 tile_size = Vector2i(32, 32)
 occlusion_layer_0/light_mask = 1
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 3
+physics_layer_0/collision_mask = 3
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
@@ -27,5 +28,5 @@ sources/0 = SubResource("TileSetAtlasSource_uvecr")
 [node name="Tetris" type="Node"]
 script = ExtResource("2_uvecr")
 
-[node name="Tilemap" type="TileMapLayer" parent="."]
+[node name="Tilemap" type="TileMapLayer" parent="." groups=["tile"]]
 tile_set = SubResource("TileSet_ve08m")

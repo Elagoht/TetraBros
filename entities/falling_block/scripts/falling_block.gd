@@ -7,6 +7,7 @@ class_name FallingBlock
 @onready var tetris: Tetris
 @onready var tilemap: TileMapLayer
 @onready var bottom_collider: CollisionShape2D = $Area2D/BottomCollider
+@onready var ground_ray: RayCast2D = $RayCast2D
 
 func world_to_tile(world_position: Vector2) -> Vector2i:
 	var x = int(world_position.x/32)
@@ -21,10 +22,13 @@ func _process(_delta: float) -> void:
 	if position.y > 392:
 		tetris.decrease_falling_block_count(1)
 		queue_free()
+	if ground_ray.is_colliding():
+		var collider = ground_ray.get_collider()
+		if collider is TileMapLayer:
+			make_solid()
 
 func _physics_process(delta: float) -> void:
-	if move_and_collide(Vector2.DOWN*speed*delta):
-		make_solid()
+	position.y += speed*delta
 
 func make_solid():
 	tetris.decrease_falling_block_count(1)
